@@ -1,12 +1,9 @@
 package seedu.homechef.model.order.completionstatus;
 
-import seedu.homechef.model.order.Address;
-
-import static java.util.Objects.requireNonNull;
 import static seedu.homechef.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Order's completion status in the HomeChef.
+ * Represents an Order's completion status in the HomeChef.
  */
 public class CompletionStatus {
     private static final int MIN_STATUS = 0;

@@ -1,6 +1,12 @@
 package seedu.homechef.model.order.completionstatus;
 
-public class InProgress extends CompletionStatus{
+/**
+ * Represents a Order's in progress status in the HomeChef.
+ */
+public class InProgress extends CompletionStatus {
+    /**
+     * Constructs a {@code InProgress} status.
+     */
     public InProgress() {
         super(0);
     }

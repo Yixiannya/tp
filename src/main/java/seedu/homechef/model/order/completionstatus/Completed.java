@@ -1,6 +1,12 @@
 package seedu.homechef.model.order.completionstatus;
 
-public class Completed extends CompletionStatus{
+/**
+ * Represents a Order's completed status in the HomeChef.
+ */
+public class Completed extends CompletionStatus {
+    /**
+     * Constructs a {@code Completed} status.
+     */
     public Completed() {
         super(1);
     }
