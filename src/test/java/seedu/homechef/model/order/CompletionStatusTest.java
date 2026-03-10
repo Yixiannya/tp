@@ -1,6 +1,8 @@
 package seedu.homechef.model.order;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homechef.testutil.Assert.assertThrows;
 
@@ -44,5 +46,15 @@ public class CompletionStatusTest {
 
         // different values -> returns false
         assertFalse(completionStatus.equals(new CompletionStatus(0)));
+    }
+
+    @Test
+    public void hashCodeTest() {
+        CompletionStatus completionStatus1 = new CompletionStatus(0);
+        CompletionStatus completionStatus2 = new CompletionStatus(1);
+
+        assertEquals(completionStatus1.hashCode(), Integer.hashCode(0));
+        assertNotEquals(completionStatus1.hashCode(), Integer.hashCode(1));
+        assertNotEquals(completionStatus1.hashCode(), completionStatus2.hashCode());
     }
 }
