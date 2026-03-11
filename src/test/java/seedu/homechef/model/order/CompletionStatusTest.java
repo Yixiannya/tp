@@ -8,8 +8,6 @@ import static seedu.homechef.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.homechef.model.order.completionstatus.CompletionStatus;
-
 public class CompletionStatusTest {
     @Test
     public void constructor_invalidCompletionStatus_throwsIllegalArgumentException() {
@@ -56,5 +54,14 @@ public class CompletionStatusTest {
         assertEquals(completionStatus1.hashCode(), Integer.hashCode(0));
         assertNotEquals(completionStatus1.hashCode(), Integer.hashCode(1));
         assertNotEquals(completionStatus1.hashCode(), completionStatus2.hashCode());
+    }
+
+    @Test
+    public void toStringTest() {
+        CompletionStatus completionStatus1 = new CompletionStatus(0);
+        CompletionStatus completionStatus2 = new CompletionStatus(1);
+
+        assertEquals(completionStatus1.toString(), "In progress");
+        assertEquals(completionStatus2.toString(), "Completed");
     }
 }

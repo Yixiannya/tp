@@ -1,4 +1,4 @@
-package seedu.homechef.model.order.completionstatus;
+package seedu.homechef.model.order;
 
 import static seedu.homechef.commons.util.AppUtil.checkArgument;
 
@@ -46,6 +46,18 @@ public class CompletionStatus {
 
         CompletionStatus otherCompletionStatus = (CompletionStatus) other;
         return this.value == otherCompletionStatus.value;
+    }
+
+    @Override
+    public String toString() {
+        switch (value) {
+        case 0:
+            return "In progress";
+        case 1:
+            return "Completed";
+        default:
+            return "Invalid completion status";
+        }
     }
 
     @Override
