@@ -32,7 +32,7 @@ public class EditMenuCommand extends Command {
             + "by the index number used in the displayed menu list. "
             + "At least one field must be provided.\n"
             + "Parameters: INDEX (must be a non-zero positive integer) "
-            + "[" + PREFIX_FOOD + "NAME] "
+            + "[" + PREFIX_FOOD + "FOOD] "
             + "[" + PREFIX_PRICE + "PRICE] "
             + "[" + PREFIX_AVAILABILITY + "AVAILABILITY]\n"
             + "Example: " + COMMAND_WORD + " 1 " + PREFIX_PRICE + "6.00 " + PREFIX_AVAILABILITY + "no";

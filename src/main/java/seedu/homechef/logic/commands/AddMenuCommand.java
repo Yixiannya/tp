@@ -20,7 +20,7 @@ public class AddMenuCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an item to the menu. "
             + "Parameters: "
-            + PREFIX_FOOD + "NAME "
+            + PREFIX_FOOD + "FOOD "
             + PREFIX_PRICE + "PRICE "
             + "[" + PREFIX_AVAILABILITY + "AVAILABILITY] "
             + "\nExample: " + COMMAND_WORD + " "
