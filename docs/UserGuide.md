@@ -523,13 +523,13 @@ Adding food items to the menu is necessary before you can add orders of that foo
 
 **Format:**
 ```
-add-menu f/NAME $/PRICE [v/AVAILABILITY]
+add-menu f/FOOD $/PRICE [v/AVAILABILITY]
 ```
 
 <div markdown="1" class="alert alert-info">:information_source:
 **Notes:**
-* `NAME` must be unique, meaning no 2 food items in the menu can share the exact same name. This is **not** case-sensitive, so `birthday cake` and `Birthday Cake` are considered duplicates.
-* `NAME` accepts letters/digits (including international characters), spaces, apostrophes `'` and `’`, slashes `/`, ampersands `&`, commas `,`, periods `.`, plus signs `+`, parentheses `(` and `)`, square brackets `[` and `]`, at signs `@`, and hyphens `-`.
+* `FOOD` must be unique, meaning no 2 food items in the menu can share the exact same name. This is **not** case-sensitive, so `birthday cake` and `Birthday Cake` are considered duplicates.
+* `FOOD` accepts letters/digits (including international characters), spaces, apostrophes `'` and `’`, slashes `/`, ampersands `&`, commas `,`, periods `.`, plus signs `+`, parentheses `(` and `)`, square brackets `[` and `]`, at signs `@`, and hyphens `-`.
 * `PRICE` is a non-negative number up to 2 decimal places. Having less than 2 decimals is accepted.
   * `0`, `0.0`, and `0.00` are valid (useful for free/complimentary items).
   * Giving an input that is **not a number** or a number with **more than 2 decimals** will cause an error message to appear telling you the correct format you should use.
@@ -570,16 +570,16 @@ This helps with updating the menu when information changes, without having to de
 
 **Format:**
 ```
-edit-menu INDEX [f/NAME] [$/PRICE] [v/AVAILABILITY]
+edit-menu INDEX [f/FOOD] [$/PRICE] [v/AVAILABILITY]
 ```
 
 <div markdown="1" class="alert alert-info">
 **:information_source: Notes:**
 * `AVAILABILITY` only accepts `yes` or `no` (case-insensitive).
   * Typing anything else will give an error message stating `Availability must be 'yes' or 'no'.`
-* If `f/NAME` is provided, it follows the same character rules as `add-menu`.
+* If `f/FOOD` is provided, it follows the same character rules as `add-menu`.
 * If `$/PRICE` is provided, it follows the same number rules as `add-menu` (including allowing `0` / `0.00`).
-* Editing the `NAME` of a menu item **will not** change the name of existing orders. This is because old orders may have names that differ from the new name of a menu item, for bookkeeping purposes.
+* Editing the `FOOD` of a menu item **will not** change the name of existing orders. This is because old orders may have names that differ from the new name of a menu item, for bookkeeping purposes.
   * e.g. In the past, someone ordered a `Birthday Cake`. 1 year later, you change the name of the `Birthday Cake` to `Event Cake`. The old order should remain in the records with the original name it was sold under to maintain consistency with the receipts.
 * Similarly, editing `PRICE` and `AVAILABILITY` will **not** update existing orders either.
 </div>
@@ -688,24 +688,24 @@ downloaded.
 
 # **Command summary**
 
-| Action               | Format, Examples                                                                                                                                                                                                                                                      |
-| -------------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action               | Format, Examples                                                                                                                                                                                                                                               |
+| -------------------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add**              | `add f/FOOD c/NAME p/PHONE e/EMAIL a/ADDRESS d/DATE [q/QUANTITY] [t/TAG]... [bank/BANK_DETAILS] [paynow/PAYNOW_CONTACT] [cash/YES_OR_NO]` <br> e.g., `add f/Chicken Rice c/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd d/30-03-2026 cash/yes` |
-| **List**             | `list [d/DATE] [c/CUSTOMER] [f/FOOD] [p/PHONE] [cs/COMPLETION_STATUS] [ps/PAYMENT_STATUS]`<br> e.g., `list d/18-10-2026 cs/completed ps/Paid`                                                                                                                         |
-| **Mark In Progress** | `inprogress INDEX` <br> e.g., `inprogress 2`                                                                                                                                                                                                                          |
-| **Mark Complete**    | `complete INDEX` <br> e.g., `complete 4`                                                                                                                                                                                                                              |
-| **Mark Pending**     | `pending INDEX` <br> e.g., `pending 3`                                                                                                                                                                                                                                |
-| **Mark Paid**        | `paid INDEX` <br> e.g., `paid 1`                                                                                                                                                                                                                                      |
-| **Mark Unpaid**      | `unpaid INDEX` <br> e.g., `unpaid 1`                                                                                                                                                                                                                                  |
-| **Receipt**          | `receipt INDEX` (alias: `rec INDEX`) <br> e.g., `receipt 1`, `rec 2`                                                                                                                                                                                                 |
+| **List**             | `list [d/DATE] [c/CUSTOMER] [f/FOOD] [p/PHONE] [cs/COMPLETION_STATUS] [ps/PAYMENT_STATUS]`<br> e.g., `list d/18-10-2026 cs/completed ps/Paid`                                                                                                                  |
+| **Mark In Progress** | `inprogress INDEX` <br> e.g., `inprogress 2`                                                                                                                                                                                                                   |
+| **Mark Complete**    | `complete INDEX` <br> e.g., `complete 4`                                                                                                                                                                                                                       |
+| **Mark Pending**     | `pending INDEX` <br> e.g., `pending 3`                                                                                                                                                                                                                         |
+| **Mark Paid**        | `paid INDEX` <br> e.g., `paid 1`                                                                                                                                                                                                                               |
+| **Mark Unpaid**      | `unpaid INDEX` <br> e.g., `unpaid 1`                                                                                                                                                                                                                           |
+| **Receipt**          | `receipt INDEX` (alias: `rec INDEX`) <br> e.g., `receipt 1`, `rec 2`                                                                                                                                                                                           |
 | **Edit**             | `edit INDEX [f/FOOD] [c/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [d/DATE] [q/QUANTITY] [t/TAG]... [bank/BANK_DETAILS] [paynow/PAYNOW_CONTACT] [cash/YES_OR_NO]`<br> e.g.,`edit 2 c/James Lee e/jameslee@example.com q/2 cash/no`                                  |
-| **Delete**           | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                                   |
-| **Clear**            | `clear`                                                                                                                                                                                                                                                               |
-| **Add Menu**         | `add-menu f/NAME $/PRICE [v/AVAILABILITY]` <br> e.g., `add-menu f/Bee Hoon $/5.00 v/yes`                                                                                                                                                                              |
-| **Delete Menu**      | `delete-menu INDEX`<br> e.g., `delete-menu 3`                                                                                                                                                                                                                         |
-| **Edit Menu**        | `edit-menu INDEX [f/NAME] [$/PRICE] [v/AVAILABILITY]` <br> e.g., `edit-menu 2 f/Pain au Chocolat $/3.50 v/yes`                                                                                                                                                        |
-| **Help**             | `help`                                                                                                                                                                                                                                                                |
-| **Exit**             | `exit`                                                                                                                                                                                                                                                                |
+| **Delete**           | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                                            |
+| **Clear**            | `clear`                                                                                                                                                                                                                                                        |
+| **Add Menu**         | `add-menu f/FOOD $/PRICE [v/AVAILABILITY]` <br> e.g., `add-menu f/Bee Hoon $/5.00 v/yes`                                                                                                                                                                         |
+| **Delete Menu**      | `delete-menu INDEX`<br> e.g., `delete-menu 3`                                                                                                                                                                                                                  |
+| **Edit Menu**        | `edit-menu INDEX [f/FOOD] [$/PRICE] [v/AVAILABILITY]` <br> e.g., `edit-menu 2 f/Pain au Chocolat $/3.50 v/yes`                                                                                                                                                 |
+| **Help**             | `help`                                                                                                                                                                                                                                                         |
+| **Exit**             | `exit`                                                                                                                                                                                                                                                         |
 
 --------------------------------------------------------------------------------------------------------------------
 
